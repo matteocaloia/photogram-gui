@@ -13,9 +13,7 @@
 class FollowRequest < ApplicationRecord
   validates(:sender, { :presence => true})
   validates(:recipient, { :presence => true })
-  validates(:recipient_id, {
-    :uniqueness => { :scope => [:sender_id] }
-  })
+  validates(:recipient_id, { :uniqueness => { :scope => [:sender_id] } })
 
   def sender
     my_sender_id = self.sender_id

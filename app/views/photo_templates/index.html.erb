@@ -1,46 +1,86 @@
-<h1>List of photos</h1>
+<h1>List of photos<h1>
 
 <hr>
 
-  <form action="/insert_photo" method="post">
-    <label for="image_box">Image</label>
-    <input id="image_box" name="query_image">
+<form action="/insert_photo" method="post">
+  <div>
+    <label for="image_box">
+      Image
+    </label>
 
-    <label for="caption_box">Caption</label>
-    <textarea id="caption_box" name="query_caption"></textarea>
+    <input type="text" id="image_box" name="query_image" placeholder="Enter a URL for the image">
+  </div>
 
-    <label for="owner_id_box">Owner ID</label>
-    <input id="owner_id_box" name="query_owner_id">
+  <div>
+    <label for="caption_box">
+      Caption
+    </label>
 
-    <button>
-      Add photo
-    </button>
-  </form>
+    <textarea type="text" id="year_box" name="query_caption" placeholder="Enter a caption for the photo..."></textarea>
+
+  </div>
+
+  <div>
+    <label for="owner_id_box">
+      Owner ID
+    </label>
+
+    <input type="text" id="owner_id_box" name="query_owner_id" placeholder="Enter an ID of a user">
+  </div>
+
+  <button>
+    Add photo
+  </button>
+</form>
 
 <hr>
 
-  <table border="1">
-    <tr>
-      <th>Image</th>
-      <th>Caption</th>
-      <th>Owner</th>
-      <th>Posted</th>
-      <th></th>
-    </tr>
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Caption
+    </th> 
+
+    <th>
+      Owner
+    </th> 
+
+    <th>
+      Posted
+    </th> 
+
+    <th>
+    </th>
+  </tr>
+
   <% @list_of_photos.each do |a_photo| %>
     <tr>
       <td>
         <img src="<%= a_photo.image %>">
       </td>
-      <td><%= a_photo.caption %></td>
-      <td><%= a_photo.poster.username %></td>
-      <td><%= a_photo.created_at %></td>
+
+      <td>
+        <%= a_photo.caption %>
+      </td>
+
+      <td>
+        <%= a_photo.poster.username %>
+      </td>
+
+      <td>
+        <%= a_photo.created_at %>
+      </td>
+
       <td>
         <a href="/photos/<%= a_photo.id %>">
-          Show details
+        Show details
         </a>
       </td>
     </tr>
   <% end %>
-  </table>
-  
+</table>
+
